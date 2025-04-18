@@ -1,4 +1,12 @@
-public final class app/revanced/patches/example/ExamplePatchKt {
-	public static final fun getExamplePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+public final class app/revanced/patches/duolingo/unlimitedhearts/UnlimitedHeartsPatchKt {
+	public static final fun getUnlimitedHearts ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class app/revanced/patches/duolingo/unlockmax/UnlockDuolingoMaxPatchKt {
+	public static final fun getUnlockDuolingoMaxPath ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class app/revanced/patches/duolingo/unlocksuper/UnlockDuolingoSuperPatchKt {
+	public static final fun getUnlockDuolingoSuperPath ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
