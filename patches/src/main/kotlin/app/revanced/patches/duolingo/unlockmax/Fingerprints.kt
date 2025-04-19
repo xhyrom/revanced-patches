@@ -17,3 +17,16 @@ internal val initializeUserFingerprint = fingerprint {
         Opcode.IPUT_OBJECT
     )
 }
+
+internal val initializeSubscriptionFeatureGroup = fingerprint {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    returns("V")
+    strings("subscriptionFeatures")
+    opcodes(
+        Opcode.CONST_STRING,
+        Opcode.INVOKE_STATIC,
+        Opcode.INVOKE_DIRECT,
+        Opcode.IPUT_OBJECT
+    )
+    custom { method, classDef -> classDef.endsWith("q0;") }
+}

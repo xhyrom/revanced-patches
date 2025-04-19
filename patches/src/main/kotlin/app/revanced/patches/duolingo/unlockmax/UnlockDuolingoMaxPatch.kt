@@ -23,5 +23,65 @@ val unlockDuolingoMaxPath = bytecodePatch(
                 """.trimIndent(),
             )
         }
+
+        initializeSubscriptionFeatureGroup.method.apply {
+            val insertIndex = initializeSubscriptionFeatureGroup.patternMatch!!.endIndex
+            val register = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+            
+            addInstructions(
+                insertIndex,
+                """
+                    new-instance v0, Ljava/util/HashSet;
+                    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->CAN_ADD_SECONDARY_MEMBERS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->CHAT_TUTORS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->EXPLAIN_MY_ANSWER:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->LEGENDARY_LEVEL:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->MASTERY_QUIZ:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->MISTAKES_INBOX:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->NO_NETWORK_ADS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->NO_SUPER_PROMOS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->OFFLINE:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->ROLEPLAY_FOR_INTERMEDIATE_LEARNERS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->SKILL_TEST_OUT:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->STREAK_REPAIR:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->UNLIMITED_HEARTS:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->VIDEO_CALL_IN_PATH:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                    
+                    sget-object v$register, Lcom/duolingo/ai/roleplay/SubscriptionFeatures;->VIDEO_CALL_IN_PRACTICE_HUB:Lcom/duolingo/ai/roleplay/SubscriptionFeatures;
+                    invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+                
+                    move-object p1, v0
+                """.trimIndent()
+            )
+        }
     }
 }
