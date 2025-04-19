@@ -2,6 +2,7 @@ package app.revanced.patches.duolingo.unlocksuper
 
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.instructions
 import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -22,6 +23,16 @@ val unlockDuolingoSuperPath = bytecodePatch(
                 """
                     sget-object v$register, Lcom/duolingo/data/user/SubscriberLevel;->PREMIUM:Lcom/duolingo/data/user/SubscriberLevel;
                 """.trimIndent(),
+            )
+
+            // TODO: improve
+            addInstructions(
+                initializeUserFingerprint.method.instructions.size - 1,
+                """
+                    const/4 v0, 0x1
+                    iput-boolean v0, p0, LY9/J;->y:Z
+                    iput-boolean v0, p0, LY9/J;->J0:Z
+                """.trimIndent()
             )
         }
     }
