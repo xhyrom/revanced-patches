@@ -1,3 +1,9 @@
+## Hyro's Revanced Patches
+
+This repository contains my personal, non-upstreamed patches.
+
+---
+
 <p align="center">
   <picture>
     <source
