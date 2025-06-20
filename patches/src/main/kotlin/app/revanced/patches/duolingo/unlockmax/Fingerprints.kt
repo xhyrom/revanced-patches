@@ -7,7 +7,7 @@ import com.android.tools.smali.dexlib2.Opcode
 internal val initializeUserFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     returns("V")
-    strings("betaStatus", "subscriberLevel", "from(...)")
+    strings("betaStatus", "subscriberLevel", "energyConfig")
     opcodes(
         Opcode.IPUT_OBJECT,
         Opcode.MOVE_FROM16,
@@ -28,5 +28,5 @@ internal val initializeSubscriptionFeatureGroup = fingerprint {
         Opcode.INVOKE_DIRECT,
         Opcode.IPUT_OBJECT
     )
-    custom { method, classDef -> classDef.endsWith("q0;") }
+    custom { method, classDef -> classDef.endsWith("eb/i;") }
 }

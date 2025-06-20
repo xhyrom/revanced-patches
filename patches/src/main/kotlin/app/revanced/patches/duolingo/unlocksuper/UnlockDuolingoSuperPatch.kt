@@ -4,6 +4,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.instructions
 import app.revanced.patcher.patch.bytecodePatch
+import app.revanced.patches.duolingo.unlockmax.initializeUserFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 @Suppress("unused")
@@ -11,7 +12,7 @@ val unlockDuolingoSuperPath = bytecodePatch(
     "Unlock Duolingo Super",
     use = false
 ) {
-    compatibleWith("com.duolingo"("6.26.2"))
+    compatibleWith("com.duolingo"("6.35.0"))
 
     execute {
         initializeUserFingerprint.method.apply {
