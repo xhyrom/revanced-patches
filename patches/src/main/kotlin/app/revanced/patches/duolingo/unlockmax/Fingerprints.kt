@@ -28,5 +28,5 @@ internal val initializeSubscriptionFeatureGroup = fingerprint {
         Opcode.INVOKE_DIRECT,
         Opcode.IPUT_OBJECT
     )
-    custom { method, classDef -> classDef.endsWith("eb/i;") }
+    custom { method, classDef -> classDef.endsWith("Rd/h;") }
 }

@@ -4,14 +4,13 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.instructions
 import app.revanced.patcher.patch.bytecodePatch
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 @Suppress("unused")
 val unlockDuolingoMaxPath = bytecodePatch(
     "Unlock Duolingo Max"
 ) {
-    compatibleWith("com.duolingo"("6.35.0"))
+    compatibleWith("com.duolingo"("6.54.5"))
 
     execute {
         initializeUserFingerprint.method.apply {
@@ -30,9 +29,9 @@ val unlockDuolingoMaxPath = bytecodePatch(
                 initializeUserFingerprint.method.instructions.size - 1,
                 """
                     const/4 v0, 0x1
-                    iput-boolean v0, p0, Lhb/H;->y:Z
-                    iput-boolean v0, p0, Lhb/H;->L0:Z
-                    iput-boolean v0, p0, Lhb/H;->M0:Z
+                    iput-boolean v0, p0, LVd/K;->y:Z
+                    iput-boolean v0, p0, LVd/K;->L0:Z
+                    iput-boolean v0, p0, LVd/K;->M0:Z
                 """.trimIndent()
             )
         }
@@ -47,49 +46,49 @@ val unlockDuolingoMaxPath = bytecodePatch(
                     new-instance v0, Ljava/util/HashSet;
                     invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->CAN_ADD_SECONDARY_MEMBERS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->CAN_ADD_SECONDARY_MEMBERS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->CHAT_TUTORS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->CHAT_TUTORS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->EXPLAIN_MY_ANSWER:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->EXPLAIN_MY_ANSWER:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->LEGENDARY_LEVEL:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->LEGENDARY_LEVEL:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->MASTERY_QUIZ:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->MASTERY_QUIZ:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->MISTAKES_INBOX:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->MISTAKES_INBOX:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->NO_NETWORK_ADS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->NO_NETWORK_ADS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->NO_SUPER_PROMOS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->NO_SUPER_PROMOS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->OFFLINE:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->OFFLINE:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->ROLEPLAY_FOR_INTERMEDIATE_LEARNERS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->ROLEPLAY_FOR_INTERMEDIATE_LEARNERS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->SKILL_TEST_OUT:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->SKILL_TEST_OUT:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->STREAK_REPAIR:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->STREAK_REPAIR:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->UNLIMITED_HEARTS:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->UNLIMITED_HEARTS:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->VIDEO_CALL_IN_PATH:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->VIDEO_CALL_IN_PATH:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                     
-                    sget-object v$register, Lcom/duolingo/data/subscription/max/SubscriptionFeatures;->VIDEO_CALL_IN_PRACTICE_HUB:Lcom/duolingo/data/subscription/max/SubscriptionFeatures;
+                    sget-object v$register, Lcom/duolingo/core/subscription/models/SubscriptionFeatures;->VIDEO_CALL_IN_PRACTICE_HUB:Lcom/duolingo/core/subscription/models/SubscriptionFeatures;
                     invoke-interface {v0, v$register}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
                 
                     move-object p1, v0

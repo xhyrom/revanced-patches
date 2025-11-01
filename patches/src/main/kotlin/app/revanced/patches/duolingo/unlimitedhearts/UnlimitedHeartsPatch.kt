@@ -9,7 +9,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 val unlimitedHearts = bytecodePatch(
     "Unlimited hearts",
 ) {
-    compatibleWith("com.duolingo"("6.35.0"))
+    compatibleWith("com.duolingo"("6.54.5"))
 
     execute {
         initializeHealthFingerprint.method.apply {

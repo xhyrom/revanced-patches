@@ -12,7 +12,7 @@ val unlockDuolingoSuperPath = bytecodePatch(
     "Unlock Duolingo Super",
     use = false
 ) {
-    compatibleWith("com.duolingo"("6.35.0"))
+    compatibleWith("com.duolingo"("6.54.5"))
 
     execute {
         initializeUserFingerprint.method.apply {
@@ -31,8 +31,8 @@ val unlockDuolingoSuperPath = bytecodePatch(
                 initializeUserFingerprint.method.instructions.size - 1,
                 """
                     const/4 v0, 0x1
-                    iput-boolean v0, p0, LY9/J;->y:Z
-                    iput-boolean v0, p0, LY9/J;->J0:Z
+                    iput-boolean v0, p0, LVd/K;->y:Z
+                    iput-boolean v0, p0, LVd/K;->J0:Z
                 """.trimIndent()
             )
         }
